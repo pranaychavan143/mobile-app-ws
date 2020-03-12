@@ -2,7 +2,7 @@ package com.tst.mobileappws.shared.dto;
 
 import java.io.Serializable;
 
-public class UserDto implements Serializable {
+public class  UserDto implements Serializable {
 	private static final long serialVersionUID = 3206112545905525900L;
 	private long id;
 	private String userId;

@@ -15,8 +15,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 
-	public WebSecurity(UserService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-		// super();
+	public WebSecurity(UserService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) //TODO: creat class constructor pass parameters spring UserdetailServicce and BCryptPasswordEncoder
+	{
+
 		this.userDetailsService = userDetailsService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
@@ -24,10 +25,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/users")
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST,SecurityConstatnt.SING_UP_URL)
 		      .permitAll()
 		      .anyRequest()
-			  .authenticated();
+			  .authenticated().and()
+		       .addFilter(new AuthenticationFilter(authenticationManager()))
+		;
 	}
 
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
