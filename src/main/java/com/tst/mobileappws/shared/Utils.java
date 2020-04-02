@@ -14,6 +14,12 @@ public class Utils {
 		
 	}
 
+	public String generateAddressId(int length) {
+		return generateRandomString(length);
+
+	}
+
+
 	private String generateRandomString(int length) {
 		StringBuilder returnValue=new StringBuilder();
 		for(int i=0;i<length;i++) {

@@ -1,15 +1,37 @@
-package com.tst.mobileappws.shared.dto;
+package com.tst.mobileappws.io.entity;
 
-public class AddressDto {
+import com.tst.mobileappws.shared.dto.UserDto;
 
+import javax.persistence.*;
+import java.io.Serializable;
+@Entity(name="Addresses")
+public class AddressEntity implements Serializable {
+    @Id
+    @GeneratedValue
     private long id;
+
+    @Column(length = 30,nullable = false)
     private String addressId;
+
+    @Column(length = 15,nullable = false)
     private String city;
+
+    @Column(length = 15,nullable = false)
     private String country;
+
+    @Column(length = 100,nullable = false)
     private String streetName;
+
+    @Column(length = 7,nullable = false)
     private String postalCode;
+
+    @Column(length = 10,nullable = false)
     private String type;
-    private UserDto userDetails;
+
+    @ManyToOne
+    @JoinColumn(name="users_id")
+    private UserEntity userDetails;
+
 
     public long getId() {
         return id;
@@ -17,6 +39,14 @@ public class AddressDto {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
     public String getCity() {
@@ -27,7 +57,9 @@ public class AddressDto {
         this.city = city;
     }
 
-    public String getCountry() { return country; }
+    public String getCountry() {
+        return country;
+    }
 
     public void setCountry(String country) {
         this.country = country;
@@ -57,15 +89,11 @@ public class AddressDto {
         this.type = type;
     }
 
-    public UserDto getUserDetails() {
-        return userDetails;
+    public UserEntity getUserDetails() {
+        return userDetails; 
     }
 
-    public void setUserDetails(UserDto userDetails) {
+    public void setUserDetails(UserEntity userDetails) {
         this.userDetails = userDetails;
     }
-
-    public String getAddressId() { return addressId;}
-
-    public void setAddressId(String addressId) { this.addressId = addressId;}
 }

@@ -1,11 +1,9 @@
 package com.tst.mobileappws.io.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "users")
 public class UserEntity implements Serializable {
@@ -32,6 +30,9 @@ public class UserEntity implements Serializable {
 
 	private String encryptedPassword;
 	private String emailVerificationTocken;
+
+	@OneToMany(mappedBy = "userDetails",cascade =CascadeType.ALL)
+	private List<AddressEntity> address;
 
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
@@ -108,4 +109,11 @@ public class UserEntity implements Serializable {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
 
+	public List<AddressEntity> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<AddressEntity> address) {
+		this.address = address;
+	}
 }
