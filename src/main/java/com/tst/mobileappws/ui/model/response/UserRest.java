@@ -8,7 +8,7 @@ public class UserRest {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private List<AdddressRest> adddressRest;
+	private List<AddressRest> addressRest;
 
 	public String getUserId() {
 		return userId;
@@ -42,7 +42,7 @@ public class UserRest {
 		this.email = email;
 	}
 
-	public List<AdddressRest> getAdddressRest() {return adddressRest; }
+	public List<AddressRest> getAddressRest() {return addressRest; }
 
-	public void setAdddressRest(List<AdddressRest> adddressRest) {this.adddressRest = adddressRest;}
+	public void setAddressRest(List<AddressRest> addressRest) {this.addressRest = addressRest;}
 }

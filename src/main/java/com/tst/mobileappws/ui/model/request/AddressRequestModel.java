@@ -2,6 +2,7 @@ package com.tst.mobileappws.ui.model.request;
 
 public class AddressRequestModel {
 
+    private String addressId;
     private String city;
     private String country;
     private String streetName;
@@ -46,5 +47,13 @@ public class AddressRequestModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 }

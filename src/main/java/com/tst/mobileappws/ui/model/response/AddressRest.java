@@ -1,7 +1,9 @@
 package com.tst.mobileappws.ui.model.response;
 
-public class AdddressRest {
+import org.springframework.hateoas.ResourceSupport;
+public class AddressRest extends ResourceSupport {
 
+    private String addressId;
     private String city;
     private String country;
     private String streetName;
@@ -46,5 +48,13 @@ public class AdddressRest {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 }
