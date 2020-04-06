@@ -19,7 +19,6 @@ import com.tst.mobileappws.ui.model.request.UserDetailRequestModel;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
@@ -53,14 +52,14 @@ public class UserController {
 	)
 	public UserRest createUser(@RequestBody UserDetailRequestModel userDetails)throws UserServiceException {
 	
-		UserRest returnValue = new UserRest();
+
 
 		if (userDetails.getFirstName().isEmpty())throw  new UserServiceException(ErrorMessage.MISSING_REQUIRED_FIELD.getErrorMessages());
 
 		ModelMapper modelMapper = new ModelMapper();
 		UserDto userDto= modelMapper.map(userDetails,UserDto.class);
 		UserDto createdUser = userService.createUser(userDto);
-		returnValue=modelMapper.map(createdUser,UserRest.class);
+		UserRest  returnValue=modelMapper.map(createdUser,UserRest.class);
 		return returnValue;
 	}
 
@@ -130,7 +129,7 @@ public class UserController {
 		return new Resources<>(addressesListRestModel);
 	}
 
-	// TODO: 04-04-2020 "application/hal+json" in postman we also change the Acceptance
+	//  04-04-2020 "application/hal+json" in postman we also change the Acceptance
 
 	@GetMapping(value = "/{id}/addresses/{addressId}",
 			produces = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE,"application/hal+json"}
