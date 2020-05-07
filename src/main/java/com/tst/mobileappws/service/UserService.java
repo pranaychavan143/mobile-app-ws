@@ -7,7 +7,7 @@ import com.tst.mobileappws.shared.dto.UserDto;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-//User Deatail service come from springframework security
+//User Deatail service come from springframework security package
 	UserDto createUser(UserDto user);
 	UserDto getUser(String email);
 	UserDto getUserByUserId(String userId);

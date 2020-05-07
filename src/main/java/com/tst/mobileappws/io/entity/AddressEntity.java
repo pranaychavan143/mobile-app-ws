@@ -1,12 +1,13 @@
 package com.tst.mobileappws.io.entity;
-
-import com.tst.mobileappws.shared.dto.UserDto;
-
 import javax.persistence.*;
 import java.io.Serializable;
-@Entity(name="Addresses")
+@Entity
+@Table(name="Addresses")
 public class AddressEntity implements Serializable {
-    @Id
+   
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue
     private long id;
 
@@ -29,7 +30,7 @@ public class AddressEntity implements Serializable {
     private String type;
 
     @ManyToOne
-    @JoinColumn(name="users_id")
+    @JoinColumn(name="user_Id")
     private UserEntity userDetails;
 
 

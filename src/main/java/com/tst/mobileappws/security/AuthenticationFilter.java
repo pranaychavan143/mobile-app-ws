@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +34,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         try {
             UserLoginRequestModel creds = new ObjectMapper()
                     .readValue(request.getInputStream(),UserLoginRequestModel.class);
+
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                     creds.getEmail(),
@@ -50,12 +50,17 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String userName = ((User)authResult.getPrincipal()).getUsername();
+    protected void successfulAuthentication(HttpServletRequest request,
+                                            HttpServletResponse response,
+                                            FilterChain chain,
+                                            Authentication auth) throws IOException, ServletException {
+        String userName = ((User)auth.getPrincipal()).getUsername();
+        //String tokenSecret = new SecurityConstatnt().getTockenSecret();
+
         String token = Jwts.builder()
                 .setSubject(userName)
-                .setExpiration(new Date(System.currentTimeMillis()+SecurityConstatnt.EXPIRATION_Time))
-                .signWith(SignatureAlgorithm.ES256,SecurityConstatnt.TOKEN_SECRET)
+                .setExpiration(new Date(System.currentTimeMillis()+SecurityConstatnt.EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512,SecurityConstatnt.getTokenSecret())
                 .compact();
 
         UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
