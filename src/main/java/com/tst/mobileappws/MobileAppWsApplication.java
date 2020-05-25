@@ -10,8 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@SpringBootApplication
-		(exclude = {SpringDataWebAutoConfiguration.class})
+@SpringBootApplication(exclude = {SpringDataWebAutoConfiguration.class})
 public class MobileAppWsApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
@@ -39,6 +38,8 @@ public class MobileAppWsApplication extends SpringBootServletInitializer {
 
 		return  new SpringApplicationContext();
 	}
+
+
 
 
 }

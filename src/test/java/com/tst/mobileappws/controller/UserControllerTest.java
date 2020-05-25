@@ -43,7 +43,7 @@ class UserControllerTest {
         userDto.setEmail("chavan.pranay4098@gmail.com");
         userDto.setEmailVerificationTocken(null);
         userDto.setEmailVerificationStatus(false);
-        userDto.setAddressDto(getAddressDtos());
+        userDto.setAddress(getAddressDtos());
 
     }
 

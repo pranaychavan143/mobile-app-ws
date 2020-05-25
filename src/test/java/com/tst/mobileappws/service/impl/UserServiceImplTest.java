@@ -80,7 +80,7 @@ public class UserServiceImplTest {
     final void testCreateUser_CreateUserServiceException(){
         when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
         UserDto userDto = new UserDto();
-        userDto.setAddressDto(getAddressDtos());
+        userDto.setAddress(getAddressDtos());
         userDto.setFirstName("Pranay");
         userDto.setLastName("Chavan");
         userDto.setPassword("12345678");
@@ -119,7 +119,7 @@ public class UserServiceImplTest {
 
 
         UserDto userDto = new UserDto();
-        userDto.setAddressDto(getAddressDtos());
+        userDto.setAddress(getAddressDtos());
         userDto.setFirstName("Pranay");
         userDto.setLastName("Chavan");
         userDto.setPassword("12345678");
@@ -135,7 +135,7 @@ public class UserServiceImplTest {
      assertNotNull(storedUserDetail.getUserId());
      assertEquals(userEntity.getFirstName(),storedUserDetail.getFirstName());
      assertEquals(userEntity.getLastName(),storedUserDetail.getLastName());
-     assertEquals(storedUserDetail.getAddressDto().size(),userEntity.getAddress().size());
+     assertEquals(storedUserDetail.getAddress().size(),userEntity.getAddress().size());
      verify(utils,times(userEntity.getAddress().size())).generateAddressId(30);
      verify(bCryptPasswordEncoder,times(1)).encode("12345678");
      verify(userRepository,times(1)).save(any(UserEntity.class));

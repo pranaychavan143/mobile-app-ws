@@ -1,5 +1,4 @@
 package com.tst.mobileappws.ui.model.response;
-
 import org.springframework.hateoas.ResourceSupport;
 public class AddressRest extends ResourceSupport {
 

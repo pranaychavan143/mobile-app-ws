@@ -4,6 +4,9 @@ import com.tst.mobileappws.exceptions.UserServiceException;
 import com.tst.mobileappws.service.AddressService;
 import com.tst.mobileappws.shared.dto.AddressDto;
 import com.tst.mobileappws.ui.model.response.*;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiParam;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
@@ -90,6 +93,9 @@ public class UserController {
 	}
 
 
+    @ApiImplicitParams({
+			@ApiImplicitParam(name="Authorization",value = "${userController.authorizationHeader.desccription}", paramType = "header"	)
+	})
 
 	@GetMapping(produces ={MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
 	public List<UserRest> getUsers(@RequestParam(value = "page",defaultValue = "1")int page,

@@ -41,11 +41,11 @@ public class UserServiceImpl implements UserService {
 
 		if (userRepository.findByEmail(user.getEmail()) != null)
 			throw new RuntimeException("Record Allredy Exists");
-		    for (int i=0; i<user.getAddressDto().size();i++){
-				AddressDto addressDto = user.getAddressDto().get(i);
+		    for (int i=0; i<user.getAddress().size();i++){
+				AddressDto addressDto = user.getAddress().get(i);
 				addressDto.setUserDetails(user);
 				addressDto.setAddressId(utils.generateAddressId(30));
-				user.getAddressDto().set(i,addressDto);
+				user.getAddress().set(i,addressDto);
 			}
 
 		//BeanUtils.copyProperties(user, userEntity);

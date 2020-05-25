@@ -32,11 +32,11 @@ public class UserEntity implements Serializable {
 	private String encryptedPassword;
 	private String emailVerificationTocken;
 
-	@OneToMany(mappedBy = "userDetails", cascade =CascadeType.ALL)
-	private List<AddressEntity> address;
-
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
+
+	@OneToMany(mappedBy = "userDetails", cascade =CascadeType.ALL)
+	private List<AddressEntity> address;
 
 	public long getId() {
 		return id;
@@ -107,6 +107,8 @@ public class UserEntity implements Serializable {
 	}
 
 	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
+
+		emailVerificationStatus = false;
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
 

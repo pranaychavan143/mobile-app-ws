@@ -8,12 +8,10 @@ public class UserDetailRequestModel {
 	private String lastName;
 	private String email;
 	private String password;
-	private List<AddressRequestModel>addresses;
+	private List<AddressRequestModel>address;
 
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getFirstName() { return firstName; }
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -43,7 +41,11 @@ public class UserDetailRequestModel {
 		this.password = password;
 	}
 
-	public List<AddressRequestModel> getAddresses() {return addresses; }
+	public List<AddressRequestModel> getAddress() {
+		return address;
+	}
 
-	public void setAddresses(List<AddressRequestModel> addresses) { this.addresses = addresses;}
+	public void setAddress(List<AddressRequestModel> address) {
+		this.address = address;
+	}
 }
